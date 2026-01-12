@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { handleCommand, type CommandResult } from "../utils/commandHandler";
-import AsciiVisualPanel from "./AsciiVisualPanel";
-import { formatOutput } from "../utils/formatOutput";
+import { formatByCommand } from "../utils/formatters";
 import "../styles/terminal.css";
 
 const INTRO = [
@@ -81,7 +80,7 @@ export default function Terminal() {
 
       try {
         const data = await fetchFromBackend(result.endpoint);
-        const lines = formatOutput(data);
+        const lines = formatByCommand(result.endpoint, data);
 
         setOutput(prev => [...prev.slice(0, -1), ""]);
         await typeLines(lines);
@@ -122,30 +121,6 @@ export default function Terminal() {
       }
     }
   };
-
-//   return (
-//     <div className="terminal" onClick={() => inputRef.current?.focus()}>
-//       {output.map((line, idx) => (
-//         <div key={idx} className="terminal-line">
-//           {line}
-//         </div>
-//       ))}
-
-//       <div className="terminal-input">
-//         <span className="prompt">visitor@saatvik.dev:~$</span>
-//         <input
-//           ref={inputRef}
-//           value={input}
-//           onChange={e => setInput(e.target.value)}
-//           onKeyDown={onKeyDown}
-//           spellCheck={false}
-//           autoComplete="off"
-//         />
-//       </div>
-
-//       <div ref={bottomRef} />
-//     </div>
-//   );
 return (
     <div className="terminal-layout">
       {/* LEFT: TERMINAL */}
@@ -170,9 +145,6 @@ return (
 
         <div ref={bottomRef} />
       </div>
-
-      {/* RIGHT: STATIC ASCII PANEL */}
-      <AsciiVisualPanel />
     </div>
   );
 }
