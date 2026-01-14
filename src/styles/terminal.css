@@ -22,10 +22,35 @@ body,
   line-height: 1.6;
   overflow-y: auto;
   overflow-x: hidden;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Mobile specific styles */
+@media (max-width: 768px) {
+  .terminal {
+    padding: 10px 8px;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  
+  .terminal-line {
+    font-size: 11px;
+  }
+  
+  .terminal-input {
+    font-size: 11px;
+  }
+  
+  .prompt {
+    font-size: 10px;
+  }
 }
 
 .terminal-line {
   white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .terminal-input {
@@ -38,6 +63,74 @@ body,
   color: #22c55e;
 }
 
+.line-prompt {
+  color: #22c55e;
+  font-weight: 600;
+}
+
+.line-command {
+  color: #60a5fa; /* cyan/blue for commands */
+}
+
+.line-heading {
+  color: #f97316; /* orange */
+  font-weight: 700;
+}
+
+.line-error {
+  color: #fb7185; /* pink/red */
+}
+
+.line-bullet {
+  color: #eab308; /* yellow-ish bullets */
+}
+
+.line-link {
+  color: #7c3aed; /* purple links */
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.line-link:hover {
+  color: #a78bfa; /* lighter purple on hover */
+  text-decoration: underline;
+}
+
+.line-link:visited {
+  color: #9333ea; /* slightly different purple for visited */
+}
+
+.line-banner {
+  color: #a78bfa;
+  transform-origin: left top;
+}
+
+/* Scale down ASCII banner on mobile */
+@media (max-width: 768px) {
+  .line-banner {
+    font-size: 8px;
+    line-height: 1.0;
+    letter-spacing: -0.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .line-banner {
+    font-size: 6px;
+    line-height: 0.9;
+    letter-spacing: -1px;
+  }
+}
+
+@media (max-width: 360px) {
+  .line-banner {
+    font-size: 5px;
+    line-height: 0.85;
+    letter-spacing: -1.5px;
+  }
+}
+
 .terminal-input input {
   flex: 1;
   background: transparent;
@@ -47,28 +140,3 @@ body,
   font-family: inherit;
   font-size: inherit;
 }
-
-.terminal-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 320px;
-  height: 100%;
-  width: 100%;
-}
-
-
-/* Right panel */
-.ascii-panel {
-  height: 100%;
-  overflow: hidden;
-  background: #020617;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
-.ascii-panel pre {
-  line-height: 1.3;
-  white-space: pre;
-}
-
