@@ -13,7 +13,7 @@ const INTRO = [
   "███████║██║  ██║██║  ██║   ██║   ╚██████╔╝██║██║  ██╗",
   "╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝╚═╝  ╚═╝",
   "",
-  "Saatvik Raj Gupta — AI/ML Engineer | Full Stack Developer",
+  "Saatvik Gupta — AI/ML Engineer | Full Stack Developer",
   "",
   "Welcome to my terminal portfolio.",
   "Type `help` to see available commands.",
