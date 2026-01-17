@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { handleCommand, type CommandResult } from "../utils/commandHandler";
 import { formatByCommand } from "../utils/formatters";
+import config from "../config";
 import "../styles/terminal.css";
 
 const INTRO = [
@@ -19,7 +20,7 @@ const INTRO = [
   ""
 ];
 
-const API_BASE_URL = "http://localhost:8080/api";
+const API_BASE_URL = config.api.baseUrl;
 const TYPE_SPEED = 15; // ms per character
 
 export default function Terminal() {
