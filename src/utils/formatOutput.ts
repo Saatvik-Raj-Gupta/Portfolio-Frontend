@@ -8,7 +8,7 @@ export function formatOutput(data: any): string[] {
   }
 
   if (Array.isArray(data)) {
-    return data.flatMap((item, index) => {
+    return data.flatMap((item) => {
       const prefix = `- `;
       if (typeof item === "object") {
         return [prefix, ...formatOutput(item).map(l => `  ${l}`)];
